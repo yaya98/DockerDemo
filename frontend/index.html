@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <script>
+    async function getJokes() {
+      document.getElementById("jokes").innerHTML = "";
+      const response = await fetch("http://localhost:3000");
+      if (response.ok) {
+        const data = await response.json();
+        for (let joke of data) {
+          document.getElementById("jokes").innerHTML +=
+            "<li style='margin: 10px 0'>" + joke.joke + "</li>";
+          console.log(joke);
+        }
+      }
+    }
+  </script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Webapp</title>
+  </head>
+  <body>
+    <h1>Welcome to my webapp!</h1>
+    <div>
+      <input
+        type="button"
+        onclick="getJokes()"
+        value="Tell me some jokes"
+        style="font-size: 1rem; padding: 12px"
+      />
+    </div>
+    <ul id="jokes" style="font-size: 24px"></ul>
+  </body>
+</html>

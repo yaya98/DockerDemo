@@ -1,0 +1,12 @@
+services:
+  frontend:
+    build: ./frontend
+    container_name: client
+    ports:
+      - "4000:4000"
+
+  backend:
+    build: ./backend
+    container_name: server
+    ports:
+      - "3000:3000"
